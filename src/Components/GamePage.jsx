@@ -96,26 +96,36 @@ function GamePage() {
         //get scale from original image
         
         const scale = levelInfo.pixelsX / rect.right;  
+        // console.log(characterInfo[0].xcoord, "xcoord for character");
+        // console.log(characterInfo[0].ycoord, "ycoord for character");
+
+        // console.log(boxPositionX, "boxposition");
+        // console.log(rect.right, "rect right");
+        // console.log((rect.left-boxPositionX) * -1, "left click selec")
+        // console.log((rect.top-boxPositionY) * -1, "top click selec")
+        const xposition = ((rect.left - boxPositionX) * -1);
+        const yposition = ((rect.top - (boxPositionY+rect.top)) * -1);
 
 
-        if((((boxPositionX > (characterInfo[0].xcoord / scale -(rect.right * .03) )) && (boxPositionX< ( characterInfo[0].xcoord / scale + (rect.right * .03) ))) && ((boxPositionY > (characterInfo[0].ycoord/ scale - (rect.bottom * .03))) && (boxPositionY < (characterInfo[0].ycoord/scale + (rect.bottom * .03)))) && (characterSelected=="waldo")) ){
+
+        if((((xposition > (characterInfo[0].xcoord / scale -(rect.right * .03) )) && (xposition< ( characterInfo[0].xcoord / scale + (rect.right * .03) ))) && ((yposition> (characterInfo[0].ycoord/ scale - (rect.bottom * .03))) && (yposition < (characterInfo[0].ycoord/scale + (rect.bottom * .03)))) && (characterSelected=="waldo")) ){
           // console.log("found waldo");
           setWaldoFound(true);
           setSelectionBox(false);
         }
-        else if((((boxPositionX > (characterInfo[1].xcoord / scale -(rect.right * .03) )) && (boxPositionX< ( characterInfo[1].xcoord / scale + (rect.right * .03) ))) && ((boxPositionY > (characterInfo[1].ycoord/ scale - (rect.bottom * .03))) && (boxPositionY < (characterInfo[1].ycoord/scale + (rect.bottom * .03)))) && (characterSelected=="wizard")) ){
+        else if((((xposition> (characterInfo[1].xcoord / scale -(rect.right * .03) )) && (xposition< ( characterInfo[1].xcoord / scale + (rect.right * .03) ))) && ((yposition > (characterInfo[1].ycoord/ scale - (rect.bottom * .03))) && (yposition < (characterInfo[1].ycoord/scale + (rect.bottom * .03)))) && (characterSelected=="wizard")) ){
           // console.log("found wizard");
           setWizardFound(true);
           setSelectionBox(false);
 
         }
-        else if((((boxPositionX > (characterInfo[2].xcoord/ scale -(rect.right * .03) )) && (boxPositionX< ( characterInfo[2].xcoord / scale + (rect.right * .03) ))) && ((boxPositionY > (characterInfo[2].ycoord/ scale - (rect.bottom * .03))) && (boxPositionY < (characterInfo[2].ycoord/scale + (rect.bottom * .03)))) && (characterSelected=="wilma")) ){
+        else if((((xposition > (characterInfo[2].xcoord/ scale -(rect.right * .03) )) && (xposition< ( characterInfo[2].xcoord / scale + (rect.right * .03) ))) && ((yposition > (characterInfo[2].ycoord/ scale - (rect.bottom * .03))) && (yposition < (characterInfo[2].ycoord/scale + (rect.bottom * .03)))) && (characterSelected=="wilma")) ){
           // console.log("found wilma");
           setWilmaFound(true);
           setSelectionBox(false);
 
         }
-        else if((((boxPositionX > (characterInfo[3].xcoord / scale -(rect.right * .03) )) && (boxPositionX< ( characterInfo[3].xcoord / scale + (rect.right * .03) ))) && ((boxPositionY > (characterInfo[3].ycoord / scale - (rect.bottom * .03))) && (boxPositionY < (characterInfo[3].ycoord /scale + (rect.bottom * .03)))) && (characterSelected=="odlaw")) ){
+        else if((((xposition > (characterInfo[3].xcoord / scale -(rect.right * .03) )) && (xposition< ( characterInfo[3].xcoord / scale + (rect.right * .03) ))) && ((yposition > (characterInfo[3].ycoord / scale - (rect.bottom * .03))) && (yposition < (characterInfo[3].ycoord /scale + (rect.bottom * .03)))) && (characterSelected=="odlaw")) ){
           // console.log("found odlaw");
           setOdlawFound(true);
           setSelectionBox(false);
@@ -160,14 +170,27 @@ function GamePage() {
     const displayBox =(e) =>{
 
       const rect = imageref.current.getBoundingClientRect();
+      
 
       if(gameWon == false){
-        setBoxPositionX(e.clientX - (rect.left-9));
-        setBoxPositionY(e.clientY - (rect.top-9));
+        // console.log(e.clientX, "x click")
+        // console.log(e.clientY, "Y click")
+        // //gets image pixel
+        // console.log((rect.left-e.clientX) * -1, "left click")
+        // console.log((rect.top-e.clientY) * -1, "top click")
+
+
+        setBoxPositionX(((e.clientX) ));
+        setBoxPositionY(((e.clientY)-rect.top ));
+        // setBoxPositionX(((e.clientX + rect.left) ));
+        // setBoxPositionY(((e.clientY + rect.top) ));
+        
         setSelectionBox(true);
         setWrongClass("empty");
       }
     }
+    // console.log(boxPositionX)
+    // console.log(boxPositionY)
 
 
     // const actionstring = `https://heroic-surprise-production.up.railway.app/api/levels/${id.levelid}/leaderboards`
