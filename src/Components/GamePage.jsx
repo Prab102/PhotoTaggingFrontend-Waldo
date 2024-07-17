@@ -96,15 +96,21 @@ function GamePage() {
         //get scale from original image
         
         const scale = levelInfo.pixelsX / rect.right;  
-        // console.log(characterInfo[0].xcoord, "xcoord for character");
-        // console.log(characterInfo[0].ycoord, "ycoord for character");
+        console.log(characterInfo[0].xcoord, "xcoord for character");
+        console.log(characterInfo[0].ycoord, "ycoord for character");
 
         // console.log(boxPositionX, "boxposition");
-        // console.log(rect.right, "rect right");
+        console.log(rect.right, "rect right");
         // console.log((rect.left-boxPositionX) * -1, "left click selec")
         // console.log((rect.top-boxPositionY) * -1, "top click selec")
-        const xposition = ((rect.left - boxPositionX) * -1);
+        const xposition = ((rect.left - (boxPositionX+rect.left)) * -1);
         const yposition = ((rect.top - (boxPositionY+rect.top)) * -1);
+        console.log(xposition);
+        console.log(yposition);
+
+        console.log(characterInfo[0].xcoord / scale, "scale x");
+        console.log(characterInfo[0].ycoord / scale, "scale y");
+
 
 
 
@@ -173,14 +179,14 @@ function GamePage() {
       
 
       if(gameWon == false){
-        // console.log(e.clientX, "x click")
-        // console.log(e.clientY, "Y click")
+        console.log(e.clientX -rect.top, "x click")
+        console.log(e.clientY -rect.left, "Y click")
         // //gets image pixel
-        // console.log((rect.left-e.clientX) * -1, "left click")
-        // console.log((rect.top-e.clientY) * -1, "top click")
+        console.log((rect.left-e.clientX) * -1, "left click")
+        console.log((rect.top-e.clientY) * -1, "top click")
 
 
-        setBoxPositionX(((e.clientX) ));
+        setBoxPositionX(((e.clientX)-rect.left));
         setBoxPositionY(((e.clientY)-rect.top ));
         // setBoxPositionX(((e.clientX + rect.left) ));
         // setBoxPositionY(((e.clientY + rect.top) ));
