@@ -34,9 +34,9 @@
 
 #gameboard img{
     max-width: 1686px ;
-    max-height: 1068px;
+    /* max-height: 1068px; */
     /* min-width: 8; */
-    width:100vw;
+    width:100%;
 }
 #victorycard{
     position:relative;

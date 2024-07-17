@@ -94,44 +94,49 @@ function GamePage() {
       const rect = imageref.current.getBoundingClientRect();
        
         //get scale from original image
-        
-        const scale = levelInfo.pixelsX / rect.right;  
+        let scale = 1;  
+        if(levelInfo.pixelsX > rect.right){
+           scale = levelInfo.pixelsX / rect.right;  
+        }
+        // const scale = levelInfo.pixelsX / rect.right;  
         console.log(characterInfo[0].xcoord, "xcoord for character");
         console.log(characterInfo[0].ycoord, "ycoord for character");
 
         // console.log(boxPositionX, "boxposition");
-        console.log(rect.right, "rect right");
+        console.log(rect.right- rect.left, "rect x length");
         // console.log((rect.left-boxPositionX) * -1, "left click selec")
         // console.log((rect.top-boxPositionY) * -1, "top click selec")
         const xposition = ((rect.left - (boxPositionX+rect.left)) * -1);
         const yposition = ((rect.top - (boxPositionY+rect.top)) * -1);
+        const rectlength = rect.right-rect.left;
+        const rectheight = rect.bottom-rect.top;
         console.log(xposition);
         console.log(yposition);
 
-        console.log(characterInfo[0].xcoord / scale, "scale x");
-        console.log(characterInfo[0].ycoord / scale, "scale y");
+        console.log(characterInfo[1].xcoord / scale, "scale x");
+        console.log(characterInfo[1].ycoord / scale, "scale y");
 
 
 
 
-        if((((xposition > (characterInfo[0].xcoord / scale -(rect.right * .03) )) && (xposition< ( characterInfo[0].xcoord / scale + (rect.right * .03) ))) && ((yposition> (characterInfo[0].ycoord/ scale - (rect.bottom * .03))) && (yposition < (characterInfo[0].ycoord/scale + (rect.bottom * .03)))) && (characterSelected=="waldo")) ){
+        if((((xposition > (characterInfo[0].xcoord / scale -(rectlength * .03) )) && (xposition< ( characterInfo[0].xcoord / scale + (rectlength * .03) ))) && ((yposition> (characterInfo[0].ycoord/ scale - (rectheight * .03))) && (yposition < (characterInfo[0].ycoord/scale + (rectheight * .03)))) && (characterSelected=="waldo")) ){
           // console.log("found waldo");
           setWaldoFound(true);
           setSelectionBox(false);
         }
-        else if((((xposition> (characterInfo[1].xcoord / scale -(rect.right * .03) )) && (xposition< ( characterInfo[1].xcoord / scale + (rect.right * .03) ))) && ((yposition > (characterInfo[1].ycoord/ scale - (rect.bottom * .03))) && (yposition < (characterInfo[1].ycoord/scale + (rect.bottom * .03)))) && (characterSelected=="wizard")) ){
+        else if((((xposition> (characterInfo[1].xcoord / scale -(rectlength * .03) )) && (xposition< ( characterInfo[1].xcoord / scale + (rectlength * .03) ))) && ((yposition > (characterInfo[1].ycoord/ scale - (rectheight * .03))) && (yposition < (characterInfo[1].ycoord/scale + (rectheight * .03)))) && (characterSelected=="wizard")) ){
           // console.log("found wizard");
           setWizardFound(true);
           setSelectionBox(false);
 
         }
-        else if((((xposition > (characterInfo[2].xcoord/ scale -(rect.right * .03) )) && (xposition< ( characterInfo[2].xcoord / scale + (rect.right * .03) ))) && ((yposition > (characterInfo[2].ycoord/ scale - (rect.bottom * .03))) && (yposition < (characterInfo[2].ycoord/scale + (rect.bottom * .03)))) && (characterSelected=="wilma")) ){
+        else if((((xposition > (characterInfo[2].xcoord/ scale -(rectlength * .03) )) && (xposition< ( characterInfo[2].xcoord / scale + (rectlength * .03) ))) && ((yposition > (characterInfo[2].ycoord/ scale - (rectheight * .03))) && (yposition < (characterInfo[2].ycoord/scale + (rectheight * .03)))) && (characterSelected=="wilma")) ){
           // console.log("found wilma");
           setWilmaFound(true);
           setSelectionBox(false);
 
         }
-        else if((((xposition > (characterInfo[3].xcoord / scale -(rect.right * .03) )) && (xposition< ( characterInfo[3].xcoord / scale + (rect.right * .03) ))) && ((yposition > (characterInfo[3].ycoord / scale - (rect.bottom * .03))) && (yposition < (characterInfo[3].ycoord /scale + (rect.bottom * .03)))) && (characterSelected=="odlaw")) ){
+        else if((((xposition > (characterInfo[3].xcoord / scale -(rectlength * .03) )) && (xposition< ( characterInfo[3].xcoord / scale + (rectlength * .03) ))) && ((yposition > (characterInfo[3].ycoord / scale - (rectheight * .03))) && (yposition < (characterInfo[3].ycoord /scale + (rectheight * .03)))) && (characterSelected=="odlaw")) ){
           // console.log("found odlaw");
           setOdlawFound(true);
           setSelectionBox(false);
