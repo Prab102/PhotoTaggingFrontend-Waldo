@@ -1,0 +1,20 @@
+#aboutpage{
+    /* border:1px solid black; */
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+}
+#creator{
+    margin-top:30vh;
+
+}
+#fairuse{
+    border-top:1px solid white;
+    padding-top: 5vh;
+    margin-top:20vh;
+    width:40vw;
+    font-size:16px;
+    color:white;
+    font-weight:bold;
+}

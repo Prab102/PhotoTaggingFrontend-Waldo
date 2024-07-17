@@ -1,0 +1,10 @@
+#leaderboardpage{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#leaderboardheader{
+    margin-top:10vh;
+    margin-bottom:5vh;
+}
