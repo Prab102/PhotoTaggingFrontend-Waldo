@@ -16,6 +16,7 @@ async function getLevelData(){
   const response = await fetch(`https://heroic-surprise-production.up.railway.app/api/levels/${id.levelid}/leaderboards`);
   const product = await response.json();
 
+  product.sort(function(a,b) { return parseFloat(a.score) - parseFloat(b.score) } )
   setLeaderBoardInfo(product);
 
 }
